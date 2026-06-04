@@ -1,0 +1,14 @@
+{
+    "name": "acf/img-text",
+    "title": "inbody歷程記錄",
+    "description": "圖片+中英標題",
+    "style": [ "file:./style.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["image"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "img-text.php"
+    },
+    "align": "full"
+}

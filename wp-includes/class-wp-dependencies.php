@@ -56,12 +56,11 @@ class WP_Dependencies {
 	/**
 	 * An array of additional arguments passed when a handle is registered.
 	 *
-	 * The keys are dependency handles and the values are query strings which are appended to the item URL's query
-	 * string, after the `ver` if provided.
+	 * Arguments are appended to the item query string.
 	 *
 	 * @since 2.6.0
 	 *
-	 * @var array<string, string>
+	 * @var array
 	 */
 	public $args = array();
 
@@ -92,7 +91,7 @@ class WP_Dependencies {
 	 *
 	 * @since 5.4.0
 	 *
-	 * @var ?array<string, true>
+	 * @var array
 	 */
 	private $all_queued_deps;
 
@@ -101,7 +100,7 @@ class WP_Dependencies {
 	 *
 	 * @since 5.9.0
 	 *
-	 * @var array<string, string|null>
+	 * @var array
 	 */
 	private $queued_before_register = array();
 
@@ -477,7 +476,10 @@ class WP_Dependencies {
 		switch ( $status ) {
 			case 'registered':
 			case 'scripts': // Back compat.
-				return $this->registered[ $handle ] ?? false;
+				if ( isset( $this->registered[ $handle ] ) ) {
+					return $this->registered[ $handle ];
+				}
+				return false;
 
 			case 'enqueued':
 			case 'queue': // Back compat.

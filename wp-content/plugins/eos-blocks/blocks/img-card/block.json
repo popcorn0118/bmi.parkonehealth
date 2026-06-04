@@ -1,0 +1,14 @@
+{
+    "name": "acf/img-card",
+    "title": "圖文卡片",
+    "description": "圖片+白色字卡",
+    "style": [ "file:./style.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["img"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "img-card.php"
+    },
+    "align": "full"
+}

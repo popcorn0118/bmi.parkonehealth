@@ -1,0 +1,14 @@
+{
+    "name": "acf/social-links",
+    "title": "社群媒體連結",
+    "description": "LINE、FB等社群連結ICON",
+    "style": [ "file:./style.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["social"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "social-links.php"
+    },
+    "align": "full"
+}

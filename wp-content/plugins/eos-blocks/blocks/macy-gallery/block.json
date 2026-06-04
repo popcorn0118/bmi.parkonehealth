@@ -1,0 +1,14 @@
+{
+    "name": "acf/macy-gallery",
+    "title": "減重紀錄 - 瀑布流圖庫",
+    "description": "瀑布流圖庫",
+    "style": [ "file:./style.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["macy-gallery", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "macy-gallery.php"
+    },
+    "align": "full"
+}

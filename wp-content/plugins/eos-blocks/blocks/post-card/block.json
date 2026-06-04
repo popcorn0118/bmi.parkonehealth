@@ -1,0 +1,14 @@
+{
+    "name": "acf/post-card",
+    "title": "文章卡片",
+    "description": "文章圖片+白色字卡",
+    "style": [ "file:./style.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["post"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "post-card.php"
+    },
+    "align": "full"
+}

@@ -1,0 +1,14 @@
+{
+    "name": "acf/video-text",
+    "title": "心路歷程紀錄片",
+    "description": "影片+中英標題",
+    "style": [ "file:./style.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["video"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "video-text.php"
+    },
+    "align": "full"
+}

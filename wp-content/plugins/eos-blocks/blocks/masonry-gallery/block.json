@@ -1,0 +1,14 @@
+{
+    "name": "acf/masonry-gallery",
+    "title": "減重紀錄 - 瀑布流圖庫",
+    "description": "瀑布流圖庫",
+    "style": [ "file:./style.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["masonry-gallery", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "masonry-gallery.php"
+    },
+    "align": "full"
+}

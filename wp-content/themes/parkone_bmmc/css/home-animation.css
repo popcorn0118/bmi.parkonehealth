@@ -1,0 +1,120 @@
+.home-anime {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    overflow: hidden;
+    z-index: 10000;
+    pointer-events: none;
+    animation: fade-out 1.2s ease-in-out 3.2s forwards;
+    -webkit-animation: fade-out 1.2s ease-in-out 3.2s forwards;
+    transition: all 0.6s;
+}
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.anime-scene {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.anime-images {
+    position: absolute;
+    display: flex;
+    width: 200%;
+    animation-timing-function: ease-in-out;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+}
+.anime-images img {
+    width: 25%;
+    opacity: 1;
+}
+.anime-top {
+    top: 0;
+    left: 0;
+    animation-name: to-right;
+}
+.anime-bottom {
+    bottom: 0;
+    right: 0;
+    animation-name: to-left;
+}
+#anime_scene_1 {
+    z-index: 10;
+}
+@keyframes to-right {
+    from {
+        transform: translateX(-25%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 0;
+    }
+}
+@keyframes to-left {
+    from {
+        transform: translateX(25%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 0;
+    }
+}
+#anime_scene_2 {
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#anime_scene_2 div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
+#anime_scene_2 div::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    transform-origin: right center;
+    animation: slide-mask 2s ease-in-out 1s forwards;
+    -webkit-animation: slide-mask 2s ease-in-out 1s forwards;
+}
+@keyframes slide-mask {
+    from {
+        transform: scaleX(1);
+    }
+    to {
+        transform: scaleX(0);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .anime-images {
+        width: 133.3%;
+    }
+    #anime_scene_2 div {
+        flex-direction: row;
+        gap: 111px;
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "acf/banner-card",
+    "title": "聯絡我們",
+    "description": "banner背景+卡片內容按鈕",
+    "style": [ "file:./style.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["content"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "banner-card.php"
+    },
+    "align": "full"
+}

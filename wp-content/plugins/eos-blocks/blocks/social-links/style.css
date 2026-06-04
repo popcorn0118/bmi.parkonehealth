@@ -1,0 +1,13 @@
+.social-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 !important;
+    width: 100%;
+    gap: 2rem;
+    display: flex;
+}
+@media screen and (min-width: 768px) {
+    .social-links {
+        justify-content: center;
+    }
+}

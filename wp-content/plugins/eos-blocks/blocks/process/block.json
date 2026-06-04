@@ -1,0 +1,14 @@
+{
+    "name": "acf/process",
+    "title": "看診流程",
+    "description": "步驟說明",
+    "style": [ "file:./style.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["list"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "process.php"
+    },
+    "align": "full"
+}

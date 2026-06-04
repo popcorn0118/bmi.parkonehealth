@@ -1,0 +1,7 @@
+.macy-gallery-image {
+    display: flex;
+    flex-wrap: wrap;
+}
+.macy-gallery-image a {
+    width: 33%;
+}

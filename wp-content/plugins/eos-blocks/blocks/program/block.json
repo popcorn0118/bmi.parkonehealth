@@ -1,0 +1,14 @@
+{
+    "name": "acf/program",
+    "title": "治療項目介紹",
+    "description": "深色底白字+關聯文章",
+    "style": [ "file:./style.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["list"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "program.php"
+    },
+    "align": "full"
+}
