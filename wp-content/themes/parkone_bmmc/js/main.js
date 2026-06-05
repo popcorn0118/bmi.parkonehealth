@@ -321,21 +321,28 @@ function init(){
             } else {
                 expectHint.innerHTML = ''
                 expectHint.classList.add('d-none')
-                let result_0 = Math.round( 22 * (height/100) * (height/100) )
-                let result_1 = Math.round( 24 * (height/100) * (height/100) )
-                expectResults[0].value = result_0
-                expectResults[1].value = result_1
-                if(weight > result_1){
-                    expectReduce.classList.remove('d-none')
-                    expectResultWrap.classList.remove('d-none')
-                    expectReduce.innerHTML = '減少約 '+ (weight - result_1) +'Kg'
-                }else {
-                    if(weight < result_0){
-                        expectResultWrap.classList.add('d-none')
-                    }
-                    expectReduce.classList.remove('d-none')
-                    expectReduce.innerHTML = '您的BMI已達標準範圍！';
+                const bmi = weight / Math.pow(height / 100, 2);
+
+                let bmiHtml = '';
+
+                if (bmi < 18.5) {
+                    bmiHtml = 'BMI&lt;18.5為<span class="text-primary-dark">過輕</span>';
+                } else if (bmi < 24) {
+                    bmiHtml = '18.5≤BMI&lt;24為<span class="text-primary-dark">標準</span>';
+                } else if (bmi < 27) {
+                    bmiHtml = '24≤BMI&lt;27為<span class="text-primary-dark">過重</span>';
+                } else if (bmi < 30) {
+                    bmiHtml = '27≤BMI&lt;30為<span class="text-primary-dark">輕度肥胖</span>';
+                } else if (bmi < 35) {
+                    bmiHtml = '30≤BMI&lt;35為<span class="text-primary-dark">中度肥胖</span>';
+                } else {
+                    bmiHtml = 'BMI≥35為<span class="text-primary-dark">過度肥胖</span>';
                 }
+
+                expectResultWrap.classList.remove('d-none');
+
+                document.querySelector('.expect-bmi-value').textContent = Math.round(bmi);
+                document.querySelector('.expect-bmi-result').innerHTML = bmiHtml;
                 expectCard.classList.add('show')
 
                 let anchorTop = 0;
@@ -347,7 +354,6 @@ function init(){
                 // console.log(anchorTop)
                 scrollToTop(anchorTop)
 
-                getPostByWeight(result_0, result_1)
             }
             
         })
@@ -381,6 +387,35 @@ function init(){
             expectPost.classList.add('show');
         }
     }
+
+
+    /**
+     * swiper news
+     */
+    /**
+ * swiper news
+ */
+const newsSwiper = new Swiper('.news-swiper', {
+    speed: 600,
+    slidesPerView: 1,
+    spaceBetween: 24,
+    watchOverflow: false,
+    navigation: {
+        nextEl: '#sec-news .swiper-button-next',
+        prevEl: '#sec-news .swiper-button-prev',
+    },
+    breakpoints: {
+        560: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+            enabled: false,
+        }
+    }
+})
 
     /**
      * header

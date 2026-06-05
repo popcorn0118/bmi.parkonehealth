@@ -103,12 +103,12 @@ $home_animation = get_field('home_animation', 'options');
 			<div class="container bg-blur bg-white-95 services-wrap px-0 px-sm-2 pt-16 text-center">
 				<h6 class="fadein"><?= $sec_service['title_en'] ?></h6>
 				<h2 class="fs-xxl text-dark fadein"><?= $sec_service['title'] ?></h2>
-				<div class="swiper services-swiper">
+				<div class="swiper services-swiper fadein">
 					<div class="swiper-wrapper">
 						<?php foreach($sec_service['services'] as $index => $item):
 							$url = $item['post'] ? get_permalink($item['post']): '#';
 							?>
-							<a href="<?= $url ?>" class="swiper-slide py-16 px-6 fadein" data-delay="<?= 100 * $index ?>">
+							<a href="<?= $url ?>" class="swiper-slide py-16 px-6" data-delay="<?= 50 * $index ?>">
 								<div class="bg-primary-dark img-circle">
 									<img src="<?= $item['icon'] ?>" />
 								</div>
@@ -187,37 +187,29 @@ $home_animation = get_field('home_animation', 'options');
 					<h6><?= $sec_expert['title_en'] ?></h6>
 					<h2 class="fs-xxl text-dark mb-6"><?= $sec_expert['title'] ?></h2>
 					<p class="pre fs-md"><?= $sec_expert['desc'] ?></p>
-					<div class="my-20 d-flex justify-md-between gap-10">
+					<div class="my-20 d-flex gap-20">
 						<div>
 							<h4>身高</h4>
-							<input type="number" min="20" max="500" class="expect-input" size="1"/>
+							<input type="number" min="20" max="500" value="" class="expect-input" size="1"/>
 							<label class="fs-ml">CM</label>
 						</div>
 						<div>
 							<h4>體重</h4>
-							<input type="number" min="10" max="1000" class="expect-input" size="1" />
+							<input type="number" min="10" max="1000" value="" class="expect-input" size="1" />
 							<label class="fs-ml">Kg</label>
 						</div>
 					</div>
 					<span class="expect-hint d-md-none"></span>
 					<button class="btn btn-primary-dark expect-btn">馬上計算</button>
 					<hr id="expect-hr" class="dot-hr my-20" />
-					<form method="POST" action="<?= home_url('/case') ?>">
-						<h3>預期成果</h3>
-						<div class="expect-result-wrap d-flex gap-6 align-center justify-between">
-							<div>
-								<input type="number" name="weight[0]" class="me-2 fs-xxxl fs-sm-xl expect-result" readonly />
-								<span class="fs-ml">Kg</span>
-							</div>
-							<hr class="bg-gray-1 flex-fill my-0"/>
-							<div>
-								<input type="number" name="weight[1]" class="me-2 fs-xxxl fs-sm-xl expect-result" readonly />
-								<span class="fs-ml">Kg</span>
-							</div>
-						</div>
-						<h3 class="expect-reduce mt-8 d-none"></h3>
-						<button class="submit btn btn-light border-3 mt-6 d-inline-block d-md-none">了解相關案例</button>
-					</form>
+					<div class="expect-result-wrap d-none">
+						<h3 class="expect-bmi-title text-dark mb-10">
+							您的BMI為
+							<span class="expect-bmi-value">0</span>
+						</h3>
+						<div class="expect-bmi-divider"></div>
+						<h3 class="expect-bmi-result"></h3>
+					</div>
 				</div>
 				<?php
 				$default_post = get_posts( array(
@@ -235,11 +227,11 @@ $home_animation = get_field('home_animation', 'options');
 					$default_category .= $term->name;
 				endforeach;
 				?>
-				<div class="expect-post d-none d-md-block">
+				<!-- <div class="expect-post d-none d-md-block">
 					<header class="entry-header">
 						<div class="entry-date entry-meta mb-4"><?= get_the_date('', $default_post) ?></div>
 						<h3 class="entry-title mb-6"><?= str_replace(' ', '<br />',get_the_title($default_post)); ?></h3>
-					</header><!-- .entry-header -->
+					</header>
 					<div class="mb-10">
 						<p class="fs-md">治療時間：<span class="meta-time"><?= $default_post->time ?></span></p>
 						<p class="fs-md">治療方式：<span class="meta-category"><?= $default_category ?></span></p>
@@ -256,7 +248,82 @@ $home_animation = get_field('home_animation', 'options');
 							<span class="dec-line dec-next"></span>
 						</a>
 					</div>
+				</div> -->
+			</div>
+		</section>
+
+		<!-- 最新公告 -->
+		<?php
+			$news_posts = get_posts([
+				'post_type'      => 'post',
+				'posts_per_page' => 6,
+				'post_status'    => 'publish',
+			]);
+		?>
+		<section id="sec-news" class="py-sm-20 pb-20">
+			<div class="container">
+
+				<div class="text-center mb-20">
+					<h6>Latest Announcement</h6>
+					<h2 class="fs-xxl text-dark">最新公告</h2>
 				</div>
+
+				<div class="swiper news-swiper">
+					<div class="swiper-wrapper">
+
+						<?php foreach ($news_posts as $post) : setup_postdata($post); ?>
+
+							<article class="swiper-slide news-card">
+								<a href="<?php the_permalink(); ?>">
+
+									<?php if (has_post_thumbnail()) : ?>
+										<?php the_post_thumbnail('large'); ?>
+									<?php endif; ?>
+
+									<div class="news-card__content">
+
+										<div class="news-card__meta">
+											<span><?php echo get_the_date('Y.m.d'); ?></span>
+											<span>｜</span>
+											<span><?php echo get_the_category()[0]->name ?? '最新消息'; ?></span>
+										</div>
+
+										<h4 class="title text-dark"><?php the_title(); ?></h4>
+
+										<p class="desc">
+											<?php
+											echo has_excerpt()
+												? str_replace(['[...]', '[&hellip;]'], '', get_the_excerpt())
+												: wp_trim_words(
+													wp_strip_all_tags(get_the_content()),
+													200,
+													''
+												);
+											?>
+										</p>
+
+										<span class="news-card__more">
+											Read more...
+										</span>
+
+									</div>
+
+								</a>
+							</article>
+
+						<?php endforeach; wp_reset_postdata(); ?>
+
+					</div>
+
+					<button class="swiper-button-prev btn-circle d-md-none">
+						<span class="icon-arrow-prev"></span>
+					</button>
+
+					<button class="swiper-button-next btn-circle d-md-none">
+						<span class="icon-arrow-next"></span>
+					</button>
+				</div>
+
 			</div>
 		</section>
 
@@ -269,7 +336,7 @@ $home_animation = get_field('home_animation', 'options');
 		?>
 		<section id="sec_banner_<?= $index ?>" class="bg-white pt-20 pb-40 py-sm-20 pt-sm-0">
 			<div class="banner-bg banner-bg-<?= $sec_bottom['layout'] ?>">
-				<img class="d-none d-md-block <?= $shadow_way ?>" src="<?= $sec_bottom['bg']['img_lg'] ?>" />
+				<img class="d-md-block <?= $shadow_way ?>" src="<?= $sec_bottom['bg']['img_lg'] ?>" />
 				<img src="<?= $sec_bottom['bg']['img_sm'] ?>" class="d-md-none" />
 			</div>
 			<div class="container px-sm-0 d-flex align-center fadein <?= $flex_way ?>">

@@ -15,7 +15,7 @@ get_template_part( 'template-parts/header', 'about' );
                 <h2 class="mb-0"><?= get_the_title() ?></h2>
             </div>
             <div class="mt-16 pb-10 fs-md lh-xl entry-content">
-                <?= get_the_content() ?>
+                <?php the_content(); ?>
             </div>
         </div>
     </section>
