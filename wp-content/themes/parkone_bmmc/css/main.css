@@ -1955,18 +1955,16 @@ main .page {
 .swiper-treatment-program-icons .swiper-wrapper > .wp-block-column:hover .wp-block-button__link {
     color: var(--color-primary-deep) !important;
 }
-@media (max-width: 767px) {
+@media (min-width: 768px) {
 
     .swiper-treatment-program-icons .swiper-wrapper {
-        flex-wrap: nowrap !important;
-        gap: 0 !important;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
-
     .swiper-treatment-program-icons .swiper-slide {
-        flex-basis: auto !important;
-        flex-shrink: 0;
         width: auto;
-        margin-top: 0;
+        width: calc(100% / 5);
     }
 
 }
