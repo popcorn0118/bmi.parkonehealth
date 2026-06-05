@@ -295,6 +295,31 @@ function init(){
             location.assign(url + '#page_' + slug)
         }
     });
+
+    /**
+     * treatment program icons
+     */
+    const treatmentProgramSwiper = new Swiper('.swiper-treatment-program-icons', {
+        speed: 600,
+        slidesPerView: 1,
+        centeredSlides: true,
+        watchOverflow: false,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            768: {
+                enabled: false,
+            }
+        }
+    });
+
+    if (treatmentProgramSwiper.$el) {
+        if (window.innerWidth < 768) {
+            treatmentProgramSwiper.slideTo(1);
+        }
+    }
     
     /**
      * 預期體重計算

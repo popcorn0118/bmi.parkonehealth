@@ -1931,3 +1931,43 @@ main .page {
     box-shadow: 0 20px 40px #00000026;
 }
 
+/* treatment program 治療項目 獨立頁面*/
+.swiper-treatment-program-icons .swiper-wrapper {
+    border-bottom: 1px solid #DCDCDC;
+    margin-bottom: 80px;
+}
+.swiper-treatment-program-icons .swiper-wrapper > .wp-block-column  {
+    padding-bottom: 50px;
+}
+.swiper-treatment-program-icons .swiper-wrapper > .wp-block-column .wp-block-image {
+    background-color: var(--color-primary-dark);
+    width: 80px;
+    height: 80px;
+    padding: 18px;
+    border-radius: 100%;
+}
+.swiper-treatment-program-icons .swiper-wrapper > .wp-block-column .wp-block-button__link {
+    padding-top: 10px;
+}
+.swiper-treatment-program-icons .swiper-wrapper > .wp-block-column .wp-block-buttons {
+    text-align: center;
+}
+.swiper-treatment-program-icons .swiper-wrapper > .wp-block-column:hover .wp-block-button__link {
+    color: var(--color-primary-deep) !important;
+}
+@media (max-width: 767px) {
+
+    .swiper-treatment-program-icons .swiper-wrapper {
+        flex-wrap: nowrap !important;
+        gap: 0 !important;
+    }
+
+    .swiper-treatment-program-icons .swiper-slide {
+        flex-basis: auto !important;
+        flex-shrink: 0;
+        width: auto;
+        margin-top: 0;
+    }
+
+}
+
