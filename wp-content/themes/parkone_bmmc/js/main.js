@@ -312,13 +312,13 @@ function init(){
 
                 treatmentProgramSwiper = new Swiper('.swiper-treatment-program-icons', {
                     speed: 600,
-                    slidesPerView: 1.2,
+                    slidesPerView: 1,
                     centeredSlides: true,
                     watchOverflow: false,
 
                     navigation: {
-                        nextEl: '.treatment-next',
-                        prevEl: '.treatment-prev',
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
                     },
                 });
 

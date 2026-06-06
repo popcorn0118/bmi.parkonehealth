@@ -232,10 +232,14 @@ h6, .fs-sm { font-size: var(--font-size-sm); }
 .box-shadow-5 { box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15); }
 .box-shadow-6 { box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1); }
 .box-shadow-7 { box-shadow: 0px 40px 80px rgba(0, 0, 0, 0.1); }
+.box-shadow-8 { box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.08); }
 
 /* border */
 .border-3 { border: 1px solid var(--color-gray-3)}
 .border-4 { border: 1px solid var(--color-gray-4)}
+
+/* radius */
+.border-radius-16 { border-radius: 16px; }
 
 .grid-2-columns.border-between > * {
     position: relative;
@@ -282,6 +286,12 @@ h6, .fs-sm { font-size: var(--font-size-sm); }
 .justify-between { justify-content: space-between; }
 .flex-fill { flex-grow: 1; }
 .flex-wrap { flex-wrap: wrap; }
+
+@media (max-width: 768px) {
+    
+    .flex-column-m { flex-direction: column; }
+}
+
 
 .d-grid { display: grid; }
 .grid-2-columns { grid-template-columns: repeat(2, minmax(0, 2fr)); }
@@ -338,6 +348,12 @@ h6, .fs-sm { font-size: var(--font-size-sm); }
 .gap-16 { gap: 4rem; }
 .gap-20 { gap: 5rem; }
 
+.ml-0 { margin-left: 0; }
+.ml-4 { margin-left: 1rem; }
+.ml-6 { margin-left: 1.5rem; }
+.ml-8 { margin-left: 2rem; }
+.ml-10 { margin-left: 2.5rem; }
+.ml-16 { margin-left: 4rem; }
 .me-4 { margin-right: 1rem; }
 .me-6 { margin-right: 1.5rem; }
 .me-10 { margin-right: 2.5rem; }
@@ -370,6 +386,12 @@ h6, .fs-sm { font-size: var(--font-size-sm); }
 .ps-12 { padding-left: 3rem; }
 .ps-16 { padding-left: 4rem; }
 .ps-20 { padding-left: 5rem; }
+.pr-0 { padding-right: 0; }
+.pr-8 { padding-right: 2rem; }
+.pr-10 { padding-right: 2.5rem; }
+.pr-12 { padding-right: 3rem; }
+.pr-16 { padding-right: 4rem; }
+.pr-20 { padding-right: 5rem; }
 .pt-0 { padding-top: 0; }
 .pt-12 { padding-top: 3rem; }
 .pt-16 { padding-top: 4rem; }
@@ -394,6 +416,81 @@ h6, .fs-sm { font-size: var(--font-size-sm); }
 .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
 .py-30 { padding-top: 7.5rem; padding-bottom: 7.5rem; }
 .py-40 { padding-top: 10rem; padding-bottom: 10rem; }
+
+@media (max-width: 768px) {
+    .me-m-4 { margin-right: 1rem; }
+    .me-m-6 { margin-right: 1.5rem; }
+    .me-m-10 { margin-right: 2.5rem; }
+
+    .mt-m-0 { margin-top: 0rem; }
+    .mt-m-4 { margin-top: 1rem; }
+    .mt-m-6 { margin-top: 1.5rem; }
+    .mt-m-8 { margin-top: 2rem; }
+    .mt-m-10 { margin-top: 2.5rem; }
+    .mt-m-16 { margin-top: 4rem; }
+
+    .mb-m-0 { margin-bottom: 0rem; }
+    .mb-m-2 { margin-bottom: 0.5rem; }
+    .mb-m-4 { margin-bottom: 1rem; }
+    .mb-m-6 { margin-bottom: 1.5rem; }
+    .mb-m-8 { margin-bottom: 2rem; }
+    .mb-m-10 { margin-bottom: 2.5rem; }
+    .mb-m-12 { margin-bottom: 3rem; }
+    .mb-m-16 { margin-bottom: 4rem; }
+    .mb-m-30 { margin-bottom: 7.5rem; }
+
+    .my-m-0 { margin-top: 0rem; margin-bottom: 0rem; }
+    .my-m-10 { margin-top: 2.5rem; margin-bottom: 2.5rem; }
+    .my-m-12 { margin-top: 3rem; margin-bottom: 3rem; }
+    .my-m-16 { margin-top: 4rem; margin-bottom: 4rem; }
+    .my-m-20 { margin-top: 5rem; margin-bottom: 5rem; }
+
+    .p-m-6 { padding: 1.5rem; }
+    .p-m-10 { padding: 2.5rem; }
+    .p-m-12 { padding: 3rem; }
+    .p-m-16 { padding: 4rem; }
+
+    .ps-m-8 { padding-left: 2rem; }
+    .ps-m-10 { padding-left: 2.5rem; }
+    .ps-m-12 { padding-left: 3rem; }
+    .ps-m-16 { padding-left: 4rem; }
+    .ps-m-20 { padding-left: 5rem; }
+
+    .pr-m-0 { padding-right: 0; }
+    .pr-m-8 { padding-right: 2rem; }
+    .pr-m-10 { padding-right: 2.5rem; }
+    .pr-m-12 { padding-right: 3rem; }
+    .pr-m-16 { padding-right: 4rem; }
+    .pr-m-20 { padding-right: 5rem; }
+
+    .pt-m-0 { padding-top: 0; }
+    .pt-m-12 { padding-top: 3rem; }
+    .pt-m-16 { padding-top: 4rem; }
+    .pt-m-20 { padding-top: 5rem; }
+    .pt-m-30 { padding-top: 7.5rem; }
+
+    .pb-m-10 { padding-bottom: 2.5rem; }
+    .pb-m-12 { padding-bottom: 3rem; }
+    .pb-m-20 { padding-bottom: 5rem; }
+    .pb-m-30 { padding-bottom: 7.5rem; }
+    .pb-m-40 { padding-bottom: 10rem; }
+    .pb-m-50 { padding-bottom: 12.5rem; }
+
+    .px-m-0 { padding-left: 0rem; padding-right: 0rem; }
+    .px-m-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .px-m-8 { padding-left: 2rem; padding-right: 2rem; }
+    .px-m-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+    .px-m-12 { padding-left: 3rem; padding-right: 3rem; }
+
+    .py-m-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    .py-m-8 { padding-top: 2rem; padding-bottom: 2rem; }
+    .py-m-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .py-m-12 { padding-top: 3rem; padding-bottom: 3rem; }
+    .py-m-16 { padding-top: 4rem; padding-bottom: 4rem; }
+    .py-m-20 { padding-top: 5rem; padding-bottom: 5rem; }
+    .py-m-30 { padding-top: 7.5rem; padding-bottom: 7.5rem; }
+    .py-m-40 { padding-top: 10rem; padding-bottom: 10rem; }
+}
 
 /* size */
 .w-auto { width: auto; }
@@ -562,6 +659,8 @@ h6, .fs-sm { font-size: var(--font-size-sm); }
     left: calc(24px);
 }
 
+
+
 /* hr */
 .text-hr-after, .text-hr-before {
     display: flex;
@@ -593,6 +692,19 @@ h6, .fs-sm { font-size: var(--font-size-sm); }
     width: 80px;
     height: 80px;
 }
+.img-circle-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    padding: 17px;
+}
+.img-circle-flex img {
+    height: 44px;
+}
+
 /* bg */
 .main-bg {
     position: fixed;
@@ -1932,12 +2044,17 @@ main .page {
 }
 
 /* treatment program 治療項目 獨立頁面*/
-.swiper-treatment-program-icons .swiper-wrapper {
+.swiper-treatment-program-icons {
+    position: relative;
     border-bottom: 1px solid #DCDCDC;
+    padding-bottom: 50px;
     margin-bottom: 80px;
 }
+.swiper-treatment-program-icons .swiper-wrapper {
+    
+}
 .swiper-treatment-program-icons .swiper-wrapper > .wp-block-column  {
-    padding-bottom: 50px;
+    
 }
 .swiper-treatment-program-icons .swiper-wrapper > .wp-block-column .wp-block-image {
     background-color: var(--color-primary-dark);
@@ -1946,8 +2063,16 @@ main .page {
     padding: 18px;
     border-radius: 100%;
 }
+.swiper-treatment-program-icons .swiper-wrapper > .wp-block-column .wp-block-heading {
+    text-align: center;
+}
 .swiper-treatment-program-icons .swiper-wrapper > .wp-block-column .wp-block-button__link {
     padding-top: 10px;
+    font-size: var(--font-size-sm);
+    color: var(--color-gray) !important;
+    background-color: transparent !important;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 .swiper-treatment-program-icons .swiper-wrapper > .wp-block-column .wp-block-buttons {
     text-align: center;
@@ -1955,6 +2080,7 @@ main .page {
 .swiper-treatment-program-icons .swiper-wrapper > .wp-block-column:hover .wp-block-button__link {
     color: var(--color-primary-deep) !important;
 }
+
 @media (min-width: 768px) {
 
     .swiper-treatment-program-icons .swiper-wrapper {
