@@ -1,5 +1,6 @@
 <?php
-$post_type = get_post_type();
+$queried_object = get_queried_object();
+$post_type = $queried_object instanceof WP_Post_Type ? $queried_object->name : get_post_type();
 if (is_post_type_archive() && $post_type){
     $banner_top = get_field('post_type_top_banners', 'options')[$post_type];
     $title = $banner_top['title'];
