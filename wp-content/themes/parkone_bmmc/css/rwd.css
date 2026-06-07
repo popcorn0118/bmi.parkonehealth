@@ -483,10 +483,10 @@
         font-size: var(--font-size-sm);
     }
     .pko-thead {
-        height: 124px;
+        height: 80px;
     }
     .pko-thead .pko-th {
-        height: 124px;
+        height: 80px;
     }
     .pko-tr {
         position: relative;
