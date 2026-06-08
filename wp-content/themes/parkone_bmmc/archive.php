@@ -22,12 +22,43 @@ foreach($search_years as $index => $year ){
 	$search_args[$index + 1] = array('year' => intval($year));
 }
 
+// category filter (column / report archives)
+$show_category_filter = in_array( $post_type, array( 'column', 'report' ), true );
+$all_categories = array();
+$search_categories = array();
+if ( $show_category_filter ) {
+	$all_categories = get_terms( array(
+		'taxonomy'   => 'category',
+		'hide_empty' => false,
+		'parent'     => 0,
+		'orderby'    => 'slug',
+	) );
+
+	if ( isset( $_POST['c_category'] ) ) {
+		$search_categories = explode( ',', $_POST['c_category'] );
+		if ( ( $key = array_search( '', $search_categories ) ) !== false ) {
+			unset( $search_categories[ $key ] );
+		}
+	}
+}
+
+$search_tax = array( 'relation' => 'AND' );
+if ( sizeof( $search_categories ) > 0 ) {
+	$search_tax[1] = array(
+		'taxonomy' => 'category',
+		'terms'    => $search_categories,
+	);
+}
+
 global $wp_query;
-$args = array_merge( $wp_query->query_vars, 
+$args = array_merge( $wp_query->query_vars,
 			array(
 				'date_query' => $search_args,
 			)
 		);
+if ( sizeof( $search_categories ) > 0 ) {
+	$args = array_merge( $args, array( 'tax_query' => $search_tax ) );
+}
 query_posts( $args );
 ?>
 
@@ -37,14 +68,15 @@ query_posts( $args );
 				<div class="post-search-bar ps-10 ps-sm-0 d-flex flex-wrap align-center justify-between position-relative">
 					<h2 class="on-search fw-medium mb-0">
 						<?php
-						if(!$search_years){
-							echo '所有文章';
-						} else {
-							foreach ( $search_years as $index => $year ) {
-								if ( $index > 0 && $year != '') echo '、';
-								echo $year;
-							}
+						$search_summary = array();
+						foreach ( $search_years as $year ) {
+							if ( $year !== '' ) $search_summary[] = $year;
 						}
+						foreach ( $search_categories as $category_id ) {
+							$category = get_term( $category_id, 'category' );
+							if ( $category && ! is_wp_error( $category ) ) $search_summary[] = $category->name;
+						}
+						echo $search_summary ? implode( '、', $search_summary ) : '所有文章';
 						?>
 					</h2>
 					<div class="flex-fill d-flex flex-column align-end">
@@ -54,7 +86,7 @@ query_posts( $args );
 						</a>
 						<form id="search_wrap" class="search-wrap box-shadow-7" method="POST" action="">
 							<div>
-								<div>
+								<div class="mb-10">
 									<h4 class="dec-before dec-dark mb-6">年份</h4>
 									<div class="search-select-wrap">
 										<input type="hidden" name="c_year" id="c_year" value="<?= implode(',', $search_years) ?>">
@@ -63,6 +95,17 @@ query_posts( $args );
 										<?php endforeach; ?>
 									</div>
 								</div>
+								<?php if ( $show_category_filter && ! empty( $all_categories ) ) : ?>
+								<div class="mb-10">
+									<h4 class="dec-before dec-dark mb-6">文章分類</h4>
+									<div class="search-select-wrap">
+										<input type="hidden" name="c_category" id="c_category" value="<?= implode(',', $search_categories) ?>">
+										<?php foreach($all_categories as $index => $category): ?>
+										<a href="#c_category" class="search-select <?= in_array($category->term_id, $search_categories) ? 'active':'' ; ?>" data-value="<?= $category->term_id ?>"><?= $category->name ?></a>
+										<?php endforeach; ?>
+									</div>
+								</div>
+								<?php endif; ?>
 								<hr  class="my-12"/>
 								<div class="text-center text-md-left">
 									<button type="submit" class="submit btn btn-primary-dark mb-sm-6">提交分類</button>
