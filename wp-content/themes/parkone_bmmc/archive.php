@@ -24,11 +24,12 @@ foreach($search_years as $index => $year ){
 
 // category filter (column / report archives)
 $show_category_filter = in_array( $post_type, array( 'column', 'report' ), true );
+$category_taxonomy = $post_type === 'report' ? 'report_type' : 'column_type';
 $all_categories = array();
 $search_categories = array();
 if ( $show_category_filter ) {
 	$all_categories = get_terms( array(
-		'taxonomy'   => 'category',
+		'taxonomy'   => $category_taxonomy,
 		'hide_empty' => false,
 		'parent'     => 0,
 		'orderby'    => 'slug',
@@ -45,7 +46,7 @@ if ( $show_category_filter ) {
 $search_tax = array( 'relation' => 'AND' );
 if ( sizeof( $search_categories ) > 0 ) {
 	$search_tax[1] = array(
-		'taxonomy' => 'category',
+		'taxonomy' => $category_taxonomy,
 		'terms'    => $search_categories,
 	);
 }
@@ -73,7 +74,7 @@ query_posts( $args );
 							if ( $year !== '' ) $search_summary[] = $year;
 						}
 						foreach ( $search_categories as $category_id ) {
-							$category = get_term( $category_id, 'category' );
+							$category = get_term( $category_id, $category_taxonomy );
 							if ( $category && ! is_wp_error( $category ) ) $search_summary[] = $category->name;
 						}
 						echo $search_summary ? implode( '、', $search_summary ) : '所有文章';
