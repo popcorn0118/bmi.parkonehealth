@@ -136,7 +136,24 @@ input[type=number] {
     font-weight: 700;
 }
 .wpcf7 textarea {
-
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.wpcf7 .select-warp {
+    position: relative;
+}
+.wpcf7 .select-warp select  {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: none;
+}
+.wpcf7 .select-warp .icon-arrow-expand {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
 }
 .wpcf7 .title {
     font-size: 20px;
@@ -1185,6 +1202,11 @@ section[id^="sec_banner_"] .container {
 @media (max-width: 767px) {
     .banner-bg {
         top: 80px;
+    }
+}
+@media (max-width: 500px) {
+    .banner-bg {
+        top: 0;
     }
 }
 .banner-bg-right {
