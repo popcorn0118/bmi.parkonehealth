@@ -154,6 +154,7 @@ input[type=number] {
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
+    pointer-events: none;
 }
 .wpcf7 .title {
     font-size: 20px;

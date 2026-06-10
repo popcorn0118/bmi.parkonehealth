@@ -928,6 +928,13 @@ const newsSwiper = new Swiper('.news-swiper', {
     const pTable = new pkoTables('.pko-table-wrap')
 
     /**
+     * 重新計算 fadein 觸發位置
+     * (上面的 swiper 初始化會改變版面高度，需在初始化完成後重算)
+     */
+    fadeinInit()
+    window.addEventListener('load', fadeinInit)
+
+    /**
      * sticky event
      */
     // const observer = new IntersectionObserver( 
