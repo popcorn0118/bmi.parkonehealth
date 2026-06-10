@@ -35,11 +35,12 @@ $home_animation = get_field('home_animation', 'options');
 		</section>
 	<?php endif; ?>
 		<div class="main-bg d-none d-md-block">
-			<img src="<?= the_field('bg_img_lg') ?>"/>
+			<img src="<?= get_field('bg_img_lg') ?>"/>
 		</div>
 
 		<!-- Top Banners -->
 		<section id="sec-top">
+			<?php if ( empty( $home_setting['top_banner_fallback']['show'] ) ): ?>
 			<div class="swiper top-swiper">
 				<div class="swiper-wrapper">
 					<!-- Slides -->
@@ -89,6 +90,15 @@ $home_animation = get_field('home_animation', 'options');
 					<?php endforeach ?>
 				</div>
 			</div>
+			<?php else:
+				$top_banner_fallback = $home_setting['top_banner_fallback'];
+				$fallback_img_sm = $top_banner_fallback['img_sm'] ?: $top_banner_fallback['img_lg'];
+			?>
+			<div class="top-banner-fallback">
+				<img src="<?= $top_banner_fallback['img_lg'] ?>" class="w-100 d-none d-md-block"/>
+				<img src="<?= $fallback_img_sm ?>" class="w-100 d-md-none" />
+			</div>
+			<?php endif; ?>
 		</section>
 
 		<!-- Services -->
